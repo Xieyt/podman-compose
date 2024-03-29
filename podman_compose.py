@@ -2442,7 +2442,7 @@ async def compose_down(compose, args):
 @cmd_run(podman_compose, "ps", "show status of containers")
 async def compose_ps(compose, args):
     proj_name = compose.project_name
-    ps_args = ["-a", "--filter", f"label=io.podman.compose.project={proj_name}"]
+    ps_args = ["-a", "--filter", f"label=io.podman.compose.project={proj_name}", "--format=json"]
     if args.quiet is True:
         ps_args.extend(["--format", "{{.ID}}"])
     elif args.format:
